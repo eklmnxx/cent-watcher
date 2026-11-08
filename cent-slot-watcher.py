@@ -36,13 +36,13 @@ def find_home_available_rows(html: str) -> list[str]:
             continue
         t = row_text.upper()
         # Если в строке есть и AVAILABLE, и @HOME — это то, что нужно
-        if "AVAILABLE" in t and "@HOME" in t:
-            hits.append(row_text)
+        if "AVAILABLE" in t and "NOT LONGER" not in t and "@HOME" in t:
+             hits.append(row_text)
     return hits
 
 def main():
     # Отправляем сообщение о старте, чтобы убедиться, что всё работает
-    send_telegram("CISIA watcher started. I will alert you ONLY if CEnT-S@HOME shows AVAILABLE.")
+    # send_telegram("CISIA watcher started. I will alert you ONLY if CEnT-S@HOME shows AVAILABLE.")
     
     last_fp = None  # Отпечаток последнего найденного слота, чтобы не спамить
     
